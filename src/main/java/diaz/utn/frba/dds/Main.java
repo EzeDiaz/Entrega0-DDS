@@ -2,7 +2,7 @@ package diaz.utn.frba.dds;
 
 public class Main {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FaltanPrendasException {
 		//Defino algunas prendas para probar
 		Torso chomba = new Torso();
 		Torso camisa = new Torso("Camisa");
@@ -12,6 +12,7 @@ public class Main {
 		Pies zapas1 = new Pies("Zapas blancas");
 		Pies zapas2 = new Pies("Zapas negras");
 		Accesorio reloj = new Accesorio("Reloj");
+		Accesorio collar = new Accesorio("Collar");
 		
 		Sugeridor sugeridor = new Sugeridor();
 		
@@ -23,6 +24,7 @@ public class Main {
 		sugeridor.cargarPrenda(zapas2);
 		sugeridor.cargarPrenda(reloj);
 		sugeridor.cargarPrenda(chino);
+		sugeridor.cargarPrenda(collar);
 		
 		sugeridor.generarTodasLasSugerencias();
 		

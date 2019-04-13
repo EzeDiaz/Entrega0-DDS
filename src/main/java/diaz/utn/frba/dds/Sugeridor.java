@@ -40,11 +40,10 @@ public class Sugeridor {
 		}
 	
 	//Armo la lista de combinaciones, con todas las posibles
-	public void generarTodasLasSugerencias() {
-		/*
+	public void generarTodasLasSugerencias() throws FaltanPrendasException {
 		if(this.algunaListaObligatoriaEstaVacia())
-			throw excepcion no se pueden completar sugerencias validas bla bla
-		*/
+			throw new FaltanPrendasException();
+
 		Prenda torsoActual;
 		Prenda piernasActual;
 		Prenda piesActual;
@@ -61,12 +60,14 @@ public class Sugeridor {
 						 for(int m=0; m < this.cantPrendasAccesoriosCargadas(); m++) {
 							 accesorioActual = prendasAccesorios.get(m);
 							 sugerencia.setSugerenciaConAccesorio(torsoActual, piernasActual, piesActual, accesorioActual);
+							 sugerencias.add(sugerencia);
+							 sugerencia = new Sugerencia();
 						 }
 					 } else {
 						 sugerencia.setSugerenciaSinAccesorio(torsoActual, piernasActual, piesActual);
+						 sugerencias.add(sugerencia);
+						 sugerencia = new Sugerencia();
 					 }
-					 sugerencias.add(sugerencia);
-					 sugerencia = new Sugerencia();
 				 }
 			 }
 		 }
@@ -102,6 +103,10 @@ public class Sugeridor {
 	
 	public List<Sugerencia> getSugerencias() {
 		return sugerencias;
+	}
+
+	public boolean algunaListaObligatoriaEstaVacia() {
+		return (prendasDeTorso.size() == 0 || prendasDePies.size() == 0 || prendasDePiernas.size() == 0);
 	}
 	
 }
